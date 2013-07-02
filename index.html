@@ -1,0 +1,74 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+        <script type="text/javascript" src="js/conditionmaker.js"></script>
+
+        <script type="text/javascript" src="js/functions/functions.js"></script>
+        <script type="text/javascript" src="js/functions/and.js"></script>
+        <script type="text/javascript" src="js/functions/or.js"></script>
+        <script type="text/javascript" src="js/functions/equal.js"></script>
+        <script type="text/javascript" src="js/functions/nequal.js"></script>
+
+        <script type="text/javascript" src="js/models/condition.js"></script>
+
+        
+    </head>
+    <body>
+        <div>
+            This script generate JSON like this, and show real condition from JSON:<br /><br />
+            {func: 'and', childrens: [ <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;    {func: 'equal', params: [a, 1]}, <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;    {func: 'equal', params: [d, 4]}, <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;    {func: 'or',    childrens: [ <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    {func: 'equal',  params: [b, 2]}, <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    {func: 'nequal', params: [c, 3]} <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;    ]} <br />
+            ]} <br />
+        </div>
+        <hr />
+        <div id="condition"></div>
+        <script>
+            var paramList1 = [
+                    {label:'A', value:'a'},
+                    {label:'B', value:'b'},
+                    {label:'C', value:'c'},
+                    {label:'D', value:'d'}
+                ],
+                paramList2 = [
+                    {label:'1', value:1},
+                    {label:'2', value:2},
+                    {label:'3', value:3},
+                    {label:'4', value:4}
+                ];
+
+            var conditions = {
+                func: 'and', childrens: [
+                    {func: 'equal', params: ['a', 1]},
+                    {func: 'equal', params: ['d', 4]},
+                    {func: 'or', childrens: [
+                         {func: 'equal', params: ['b', 2]},
+                         {func: 'nequal', params: ['c', 3]}
+                    ]}
+               ]
+           };
+           var conditionMaker = new ConditionMaker({
+               conditions: conditions,
+               $el: $('#condition')
+           });
+            //$('#condition').conditionmaker(params);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+root { 
+    display: block;
+}
+
+#condition li, #condition ul {
+    list-style: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+#condition li.conditionmaker-or,
+#condition li.conditionmaker-and {
+    margin: 0 5px;
+}
