@@ -2,6 +2,8 @@
 
     window.ConditionMaker = Backbone.View.extend({
 
+
+        mode: 'normal',
         initialize: function() {
 
             var that = this,
@@ -16,11 +18,13 @@
 
         toEdit: function() {
             this.$el.addClass('edit');
+            this.mode = 'edit';
             this.trigger('toEdit');
         },
 
         toNormal: function() {
             this.$el.removeClass('edit');
+            this.mode = 'normal';
             this.trigger('toNormal');
         }
         

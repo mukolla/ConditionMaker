@@ -11,8 +11,11 @@
             that.$firstParam = $('<li class="conditionmaker-nequalparam"></li>');
             that.$seccondParam = $('<li class="conditionmaker-nequalparam"></li>');
             that.$nequal = $('<li class="conditionmaker-nequal">!=</li>');
+            that.$wrap = $('<span class="conditionmaker-wrap"></span>').append(that.$firstParam, that.$nequal, that.$seccondParam);
 
-            that.$el.append(that.$firstParam, that.$nequal, that.$seccondParam);
+            that.activeElements.push(that.$wrap);
+
+            that.$el.append(that.$wrap);
 
             this.render();
         },
@@ -27,6 +30,10 @@
 
             if (!_.isUndefined(params[1])) {
                 that.$seccondParam.html(params[1]);
+            }
+
+            if (that.app.mode === 'edit') {
+                that._toEdit();
             }
         }
         

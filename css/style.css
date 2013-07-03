@@ -16,7 +16,12 @@ root {
 
 #condition.edit ul.conditionmaker-andcondition,
 #condition.edit ul.conditionmaker-orcondition {
-    margin-left: 40px;
+    margin-left: 40px;  
+}
+
+#condition.edit ul.conditionmaker-equalcondition,
+#condition.edit ul.conditionmaker-nequalcondition {
+    
 }
 
 #condition li.conditionmaker-or,
@@ -44,7 +49,8 @@ root {
 #condition.edit li.conditionmaker-or,
 #condition.edit li.conditionmaker-and,
 #condition.edit li.conditionmaker-openBracket,
-#condition.edit li.conditionmaker-closeBracket {
+#condition.edit li.conditionmaker-closeBracket,
+#condition.edit .conditionmaker-wrap {
     margin-top: 1px;
     margin-bottom: 1px;
 }
@@ -52,10 +58,15 @@ root {
 #condition.edit li.conditionmaker-or.hovered,
 #condition.edit li.conditionmaker-and.hovered,
 #condition.edit li.conditionmaker-openBracket.hovered,
-#condition.edit li.conditionmaker-closeBracket.hovered {
+#condition.edit li.conditionmaker-closeBracket.hovered,
+#condition.edit .conditionmaker-wrap.hovered {
     margin-top: 0;
     margin-bottom: 0;
     border: 1px solid rgb(188, 188, 252);
     background-color: aqua;
+    cursor: pointer;
+}
+
+#condition.edit .conditionmaker-wrap.hovered li {
     cursor: pointer;
 }

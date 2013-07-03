@@ -31,6 +31,12 @@
                 that.$el.append(childModel.view.$el);
                 if ((index + 1) !== numberOfChildrens) {
                     var $or = $('<li class="conditionmaker-or">or</li>');
+
+                    $or.click(function() {
+                        if (that.app.mode === 'edit') {
+                            that.model.set('func', 'and');
+                        }
+                    });
                     that.activeElements.push($or);
                     that.$el.append($or);
                 }
@@ -40,8 +46,9 @@
                 that.$el.append(that.$closeBracket);
             }
 
-            var $hoveredElements = $(that.activeElements);
-            $hoveredElements.mouseover();
+            if (that.app.mode === 'edit') {
+                that._toEdit();
+            }
         },
 
         toEdit: function() {

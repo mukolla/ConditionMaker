@@ -11,7 +11,7 @@
             that.$openBracket  = $('<li class="conditionmaker-openBracket">(</li>');
             that.$closeBracket = $('<li class="conditionmaker-closeBracket">)</li>');
             that.activeElements.push(that.$openBracket, that.$closeBracket);
-            
+
             that.$addButton = $('<button type="button">Add</button>');
             that.$actionsBlock = $('<div></div>').append(that.$addButton);
             that.render();
@@ -31,6 +31,13 @@
                 that.$el.append(childModel.view.$el);
                 if ((index + 1) !== numberOfChildrens) {
                     var $and = $('<li class="conditionmaker-and">and</li>');
+
+                    $and.click(function(){
+                        if (that.app.mode === 'edit') {
+                            that.model.set('func', 'or');
+                        }
+                    });
+
                     that.activeElements.push($and);
                     that.$el.append($and);
                 }
@@ -38,6 +45,10 @@
             
             if (!isRoot) {
                 that.$el.append(that.$closeBracket);
+            }
+
+            if (that.app.mode === 'edit') {
+                that._toEdit();
             }
         },
 
