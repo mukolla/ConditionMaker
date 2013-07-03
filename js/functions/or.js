@@ -43,7 +43,7 @@
         },
 
         toNormal: function() {
-            this.$addButton.detach();
+            this.$addButtonBlock.detach();
         }
 
     });

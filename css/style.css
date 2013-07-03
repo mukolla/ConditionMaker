@@ -21,6 +21,11 @@ root {
 
 #condition li.conditionmaker-or,
 #condition li.conditionmaker-and {
+    margin: 0 5px;
+}
+
+#condition.edit li.conditionmaker-or,
+#condition.edit li.conditionmaker-and {
     margin: 0 20px;
 }
 

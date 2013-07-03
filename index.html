@@ -39,21 +39,23 @@ and open the template in the editor.
             ]} <br />
         </div>
         <hr />
-        <div id="condition">ff</div>
+        <button id="editBtn" type="button">Edit</button>
+        <button id="okBtn" type="button" style="display: none;">Ok</button>
+        <div id="condition"></div>
         <script>
             $(function(){
                 var paramList1 = [
-                        {label:'A', value:'a'},
-                        {label:'B', value:'b'},
-                        {label:'C', value:'c'},
-                        {label:'D', value:'d'}
-                    ],
-                    paramList2 = [
-                        {label:'1', value:1},
-                        {label:'2', value:2},
-                        {label:'3', value:3},
-                        {label:'4', value:4}
-                    ];
+                       {label:'A', value:'a'},
+                       {label:'B', value:'b'},
+                       {label:'C', value:'c'},
+                       {label:'D', value:'d'}
+                   ],
+                   paramList2 = [
+                       {label:'1', value:1},
+                       {label:'2', value:2},
+                       {label:'3', value:3},
+                       {label:'4', value:4}
+                   ];
 
                 var conditions = {
                     func: 'and', childrens: [
@@ -64,13 +66,23 @@ and open the template in the editor.
                              {func: 'nequal', params: ['c', 3]}
                         ]}
                    ]
-               };
+                };
 
-               var conditionMaker = new ConditionMaker({
-                   conditions: conditions,
-                   el: $('#condition')
-               });
-               conditionMaker.toEdit();
+                var conditionMaker = new ConditionMaker({
+                    conditions: conditions,
+                    el: $('#condition')
+                });
+
+                var $okBtn = $('#okBtn').click(function() {
+                        $okBtn.hide();
+                        $editBtn.show();
+                        conditionMaker.toNormal();
+                    }),
+                    $editBtn = $('#editBtn').click(function() {
+                        $okBtn.show();
+                        $editBtn.hide();
+                        conditionMaker.toEdit();
+                    });
             });
             
             //$('#condition').conditionmaker(params);
