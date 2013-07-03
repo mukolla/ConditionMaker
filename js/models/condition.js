@@ -9,13 +9,17 @@
             };
         },
 
-        initialize: function() {
+        initialize: function(attrs, options) {
 
+            if (!_.isUndefined(options.app)) {
+                this.app = options.app;
+            }
+            
             if (Array.isArray(this.get('childrens'))) {
-                this.set({childrens: new ConditionList(this.get('childrens'))});
+                this.set({ childrens: new ConditionList(this.get('childrens'), { app: this.app }) });
             }
 
-            this.view = new ConditionMaker.functions[this.get('func')]({model: this});
+            this.view = new ConditionMaker.functions[this.get('func')]({ model: this, app: this.app });
         }
     });
 

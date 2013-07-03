@@ -6,9 +6,13 @@
         className: 'conditionmaker-andcondition',
 
         init: function() {
-            this.$openBracket  = $('<li class="conditionmaker-openBracket">(</li>');
-            this.$closeBracket = $('<li class="conditionmaker-closeBracket">)</li>');
-            this.render();
+            var that = this;
+
+            that.$openBracket  = $('<li class="conditionmaker-openBracket">(</li>');
+            that.$closeBracket = $('<li class="conditionmaker-closeBracket">)</li>');
+            that.$addButton = $('<button type="button">Add</button>');
+            that.$addButtonBlock = $('<div></div>').append(that.$addButton);
+            that.render();
         },
 
         render: function() {
@@ -31,6 +35,20 @@
             if (!isRoot) {
                 that.$el.append(that.$closeBracket);
             }
+        },
+
+        toEdit: function() {
+            var that = this;
+
+            if (that.model.get('isRoot')) {
+                that.$el.append(that.$addButtonBlock);
+            } else {
+                that.$addButtonBlock.insertBefore(that.$closeBracket);
+            }
+        },
+
+        toNormal: function() {
+            this.$addButtonBlock.detach();
         }
 
     });

@@ -4,12 +4,41 @@ root {
 
 #condition li, #condition ul {
     list-style: none;
-    display: inline;
+    display: inline-block;
     margin: 0;
     padding: 0;
+    cursor: default;
+}
+
+#condition.edit ul {
+    display: block;
+}
+
+#condition.edit ul.conditionmaker-andcondition,
+#condition.edit ul.conditionmaker-orcondition {
+    margin-left: 40px;
 }
 
 #condition li.conditionmaker-or,
 #condition li.conditionmaker-and {
-    margin: 0 5px;
+    margin: 0 20px;
+}
+
+#condition.edit li.conditionmaker-or,
+#condition.edit li.conditionmaker-and {
+    /*margin: 0;*/
+}
+
+#condition.edit li.conditionmaker-openBracket,
+#condition.edit li.conditionmaker-closeBracket,
+#condition.edit li.conditionmaker-openBracket,
+#condition.edit li.conditionmaker-closeBracket {
+    margin-left: -40px;
+}
+
+#condition ul.conditionmaker-andcondition:hover > li.conditionmaker-openBracket,
+#condition ul.conditionmaker-andcondition:hover > li.conditionmaker-closeBracket,
+#condition ul.conditionmaker-orcondition:hover > li.conditionmaker-openBracket,
+#condition ul.conditionmaker-orcondition:hover > li.conditionmaker-closeBracket {
+    font-weight: bold;
 }

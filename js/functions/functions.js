@@ -4,12 +4,22 @@
 
         tagName: 'ul',
         initialize: function() {
-            
-            this.init();
 
+            this.app = this.options.app;
+            this.init();
+            this.listenTo(this.app, 'toEdit', this.toEdit);
+            this.listenTo(this.app, 'toNormal', this.toNormal);
         },
 
         init: function() {
+
+        },
+
+        toEdit: function() {
+
+        },
+
+        toNormal: function() {
 
         }
 
