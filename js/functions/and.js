@@ -10,8 +10,10 @@
 
             that.$openBracket  = $('<li class="conditionmaker-openBracket">(</li>');
             that.$closeBracket = $('<li class="conditionmaker-closeBracket">)</li>');
+            that.activeElements.push(that.$openBracket, that.$closeBracket);
+            
             that.$addButton = $('<button type="button">Add</button>');
-            that.$addButtonBlock = $('<div></div>').append(that.$addButton);
+            that.$actionsBlock = $('<div></div>').append(that.$addButton);
             that.render();
         },
 
@@ -28,7 +30,9 @@
             childrens.each(function(childModel, index) {
                 that.$el.append(childModel.view.$el);
                 if ((index + 1) !== numberOfChildrens) {
-                    that.$el.append($('<li class="conditionmaker-and">and</li>'));
+                    var $and = $('<li class="conditionmaker-and">and</li>');
+                    that.activeElements.push($and);
+                    that.$el.append($and);
                 }
             });
             
@@ -41,14 +45,14 @@
             var that = this;
 
             if (that.model.get('isRoot')) {
-                that.$el.append(that.$addButtonBlock);
+                that.$el.append(that.$actionsBlock);
             } else {
-                that.$addButtonBlock.insertBefore(that.$closeBracket);
+                that.$actionsBlock.insertBefore(that.$closeBracket);
             }
         },
 
         toNormal: function() {
-            this.$addButtonBlock.detach();
+            this.$actionsBlock.detach();
         }
 
     });

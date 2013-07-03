@@ -41,9 +41,21 @@ root {
     margin-left: -40px;
 }
 
-#condition ul.conditionmaker-andcondition:hover > li.conditionmaker-openBracket,
-#condition ul.conditionmaker-andcondition:hover > li.conditionmaker-closeBracket,
-#condition ul.conditionmaker-orcondition:hover > li.conditionmaker-openBracket,
-#condition ul.conditionmaker-orcondition:hover > li.conditionmaker-closeBracket {
-    font-weight: bold;
+#condition.edit li.conditionmaker-or,
+#condition.edit li.conditionmaker-and,
+#condition.edit li.conditionmaker-openBracket,
+#condition.edit li.conditionmaker-closeBracket {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+#condition.edit li.conditionmaker-or.hovered,
+#condition.edit li.conditionmaker-and.hovered,
+#condition.edit li.conditionmaker-openBracket.hovered,
+#condition.edit li.conditionmaker-closeBracket.hovered {
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 1px solid rgb(188, 188, 252);
+    background-color: aqua;
+    cursor: pointer;
 }
